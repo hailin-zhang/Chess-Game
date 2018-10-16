@@ -1,4 +1,4 @@
-class chessPiece:
+class ChessPiece:
     def __init__(self,isAlive, color, turns):
         self.isAlive = isAlive
         self.color = color

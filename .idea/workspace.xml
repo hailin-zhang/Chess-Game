@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="427e8b97-a679-42a3-ab6f-9ce718345852" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessGameUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/chess_game_UIcontroller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/board/chessBoard.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/board/chess_board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/pieces/pieceLogic.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/logic/piece_logic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chess_game_UIcontroller.py" beforeDir="false" afterPath="$PROJECT_DIR$/chess_game_UIcontroller.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,14 +28,14 @@
           <entry key="Python Console" value="1" />
           <entry key="dummy" value="46" />
           <entry key="md" value="68" />
-          <entry key="py" value="5311" />
+          <entry key="py" value="5321" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="68" />
           <entry key="PLAIN_TEXT" value="46" />
-          <entry key="Python" value="5312" />
+          <entry key="Python" value="5322" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -64,8 +61,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/chess_game_UIcontroller.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1615">
-                  <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+                <state relative-caret-position="312">
+                  <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -105,6 +102,7 @@
       <find>pygame.image.load</find>
       <find>.png&quot;)</find>
       <find>[,]</find>
+      <find>black</find>
     </findStrings>
     <replaceStrings>
       <replace>EMPTY</replace>
@@ -307,7 +305,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32952183" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32952183" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -315,7 +313,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32328483" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32952183" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.32952183" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -364,8 +362,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chess_game_UIcontroller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+        <state relative-caret-position="312">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

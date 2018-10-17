@@ -19,7 +19,7 @@ clock = pygame.time.Clock()
 # TODO: make some funky chessboards!
 # print the initial board
 chessBoardObject = ChessBoard()
-board_dimensions = chessBoardObject.get_board().shape  # returns a tuple of (#rows, #cols)=
+board_dimensions = chessBoardObject.get_board().shape  # returns a tuple of (#rows, #cols)
 if (board_dimensions[0] and board_dimensions[1]) > 0:
     # want to keep chess board data structure private
     literal_board = chessBoardObject.get_board()
@@ -36,7 +36,7 @@ if (board_dimensions[0] and board_dimensions[1]) > 0:
                               GRID_HEIGHT * row,
                               GRID_WIDTH,
                               GRID_HEIGHT])
-            # display the initial board pieces - done robustly for future irregular chessboards
+            # display the initial board pieces - done robustly for (future) irregular chessboards
             if curr_piece != 0:
                 # IF the PIECE is BLACK:
                 if curr_piece % 2 == 1:

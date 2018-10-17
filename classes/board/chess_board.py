@@ -16,7 +16,7 @@ KNIGHT = 12  # 0b1100
 
 class ChessBoard:
     def __init__(self):
-        # Sets pieces on board to initial locations: BLACK PIECES are ODD (i.e. BLACK_MASK)
+        # Sets logic on board to initial locations: BLACK PIECES are ODD (i.e. BLACK_MASK)
         self._board = numpy.array([[ROOK + BLACK_MASK, KNIGHT + BLACK_MASK, BISHOP + BLACK_MASK, QUEEN + BLACK_MASK,
                                     KING + BLACK_MASK, BISHOP + BLACK_MASK, KNIGHT + BLACK_MASK, ROOK + BLACK_MASK],
                                    [PAWN + BLACK_MASK, PAWN + BLACK_MASK, PAWN + BLACK_MASK, PAWN + BLACK_MASK,
@@ -28,5 +28,8 @@ class ChessBoard:
                                    # WHITE PIECES are EVEN
                                    [PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN],
                                    [ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK]])
+
+    def get_board(self):
+        return self._board
 
 

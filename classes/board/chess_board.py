@@ -28,8 +28,16 @@ class ChessBoard:
                                    # WHITE PIECES are EVEN
                                    [PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN],
                                    [ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK]])
+        self._currently_selected = None
 
     def get_board(self):
         return self._board
 
+    # TODO: for branch prediction in parallel in AI
+    def set_selected_piece(self, row, col):
+        self._currently_selected = self._board[row][col]
 
+    def move_piece(self, old_coords, new_coords):
+        old_piece = self._board[old_coords[1]][old_coords[0]]
+        self._board[old_coords[1]][old_coords[0]] = 0
+        self._board[new_coords[1]][new_coords[0]] = old_piece

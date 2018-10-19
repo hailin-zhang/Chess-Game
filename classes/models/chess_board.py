@@ -3,7 +3,6 @@ import numpy
 # if PIECE is ODD, PIECE is BLACK; otherwise WHITE
 BLACK_MASK = 1
 
-# A chess models:
 # PIECES:
 EMPTY  = 0   # 0b0
 PAWN   = 2   # 0b10

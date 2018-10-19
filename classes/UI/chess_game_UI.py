@@ -25,7 +25,8 @@ class ChessBoardUI:
                                       self.height * row,
                                       self.width,
                                       self.height])
-                    # display the initial models pieces - done robustly for (future) irregular chessboards
+                    # display the board pieces - done robustly for (future) irregular chessboards
+                    # note to self: must be grids otherwise logic needs to be refactored
                     if curr_piece != 0:
                         # IF the PIECE is BLACK:
                         if curr_piece % 2 == 1:

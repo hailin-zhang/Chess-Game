@@ -30,6 +30,7 @@ UI_control.update_board()
 
 logic_control = ChessLogic()
 # loops while running, handle I/O events & logic
+is_whites_turn = True
 running = True
 while running:
     for event in pygame.event.get():
@@ -40,10 +41,11 @@ while running:
             selected_row = math.floor(selected_coords[1] / GRID_HEIGHT)
             # print(math.floor(selected_coords[0] / GRID_WIDTH),  math.floor(selected_coords[1] / GRID_HEIGHT))
             current_piece = literal_board[selected_row][selected_col]
-            if not(current_piece == 0 or current_piece == 14 or current_piece == 15 or current_piece == 16):
-                chessBoardObject.set_selected_piece(selected_row, selected_col)
-                game_display.blit(pygame.image.load("resources/images/selectedOverlay.png"),
-                                  [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])
+            if is_whites_turn and current_piece % 2 == 0 or not is_whites_turn and current_piece % 2 == 1:
+                if not (current_piece == 0 or current_piece == 14 or current_piece == 15 or current_piece == 16):
+                    chessBoardObject.set_selected_piece(selected_row, selected_col)
+                    game_display.blit(pygame.image.load("resources/images/selectedOverlay.png"),
+                                      [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])
             else:
                 game_display.blit(pygame.image.load("resources/images/invalidOverlay.png"),
                                   [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])
@@ -55,8 +57,10 @@ while running:
             if logic_control.is_valid_move(literal_board,
                                            board_dimensions,
                                            (selected_col, selected_row),
-                                           (new_col, new_row)):
+                                           (new_col, new_row)) \
+                    and ((is_whites_turn and current_piece % 2 == 0) or (not is_whites_turn and current_piece % 2 == 1)):
                 chessBoardObject.move_piece((selected_col, selected_row), (new_col, new_row))
+                is_whites_turn = not is_whites_turn
                 UI_control.update_board()
             else:
                 UI_control.update_board()

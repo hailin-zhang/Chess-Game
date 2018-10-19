@@ -3,7 +3,7 @@ import numpy
 # if PIECE is ODD, PIECE is BLACK; otherwise WHITE
 BLACK_MASK = 1
 
-# A chess board:
+# A chess models:
 # PIECES:
 EMPTY  = 0   # 0b0
 PAWN   = 2   # 0b10
@@ -13,10 +13,15 @@ ROOK   = 8   # 0b1000
 BISHOP = 10  # 0b1010
 KNIGHT = 12  # 0b1100
 
+# MOVED PIECE (for castling, pawn 1st move), FINAL and EQUIVALENT TO 0:
+MOVED_PAWN = 14
+MOVED_ROOK = 15
+MOVED_KING = 16
+
 
 class ChessBoard:
     def __init__(self):
-        # Sets logic on board to initial locations: BLACK PIECES are ODD (i.e. BLACK_MASK)
+        # Sets pieces to initial locations: BLACK PIECES are ODD (i.e. BLACK_MASK)
         self._board = numpy.array([[ROOK + BLACK_MASK, KNIGHT + BLACK_MASK, BISHOP + BLACK_MASK, QUEEN + BLACK_MASK,
                                     KING + BLACK_MASK, BISHOP + BLACK_MASK, KNIGHT + BLACK_MASK, ROOK + BLACK_MASK],
                                    [PAWN + BLACK_MASK, PAWN + BLACK_MASK, PAWN + BLACK_MASK, PAWN + BLACK_MASK,
@@ -37,7 +42,10 @@ class ChessBoard:
     def set_selected_piece(self, row, col):
         self._currently_selected = self._board[row][col]
 
+    # REQUIRES: piece moved is a valid piece (i.e. not EMPTY)
     def move_piece(self, old_coords, new_coords):
-        old_piece = self._board[old_coords[1]][old_coords[0]]
-        self._board[old_coords[1]][old_coords[0]] = 0
+        old_col = old_coords[0]
+        old_row = old_coords[1]
+        old_piece = self._board[old_row][old_col]
+        self._board[old_row][old_col] = 0
         self._board[new_coords[1]][new_coords[0]] = old_piece

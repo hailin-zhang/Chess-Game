@@ -1,8 +1,9 @@
 import pygame
 import math
 
-from classes.board.chess_board import ChessBoard
+from classes.models.chess_board import ChessBoard
 from classes.UI.chess_game_UI import ChessBoardUI
+from classes.logic.piece_logic import ChessLogic
 
 # UI constants
 DISPLAY_HEIGHT = 800
@@ -19,13 +20,14 @@ pygame.display.set_caption("Chess")
 clock = pygame.time.Clock()
 
 # TODO: make some funky chessboards!
-# print the initial board
+# print the initial models
 chessBoardObject = ChessBoard()
 board_dimensions = chessBoardObject.get_board().shape  # returns a tuple of (#rows, #cols)
 literal_board = chessBoardObject.get_board()
 ui_control = ChessBoardUI(GRID_WIDTH, GRID_HEIGHT, board_dimensions, literal_board, game_display, LIGHT_SHADE, DARK_SHADE)
 ui_control.update_board()
 
+logic_control = ChessLogic()
 # loops while running, handle I/O events & logic
 running = True
 while running:
@@ -33,19 +35,23 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             # cache the mouse coordinates
             selected_coords = pygame.mouse.get_pos()
-            selected_row = math.floor(selected_coords[0] / GRID_WIDTH)
-            selected_col = math.floor(selected_coords[1] / GRID_HEIGHT)
-            if literal_board[selected_col][selected_row] != 0:
+            selected_col = math.floor(selected_coords[0] / GRID_WIDTH)
+            selected_row = math.floor(selected_coords[1] / GRID_HEIGHT)
+            # print(math.floor(selected_coords[0] / GRID_WIDTH),  math.floor(selected_coords[1] / GRID_HEIGHT))
+            if literal_board[selected_row][selected_col] != (0 or 14 or 15 or 16):
                 chessBoardObject.set_selected_piece(selected_row, selected_col)
                 game_display.blit(pygame.image.load("resources/images/selectedOverlay.png"),
-                                  [selected_row * GRID_HEIGHT, selected_col * GRID_WIDTH])
+                                  [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])
         if event.type == pygame.MOUSEBUTTONUP:
             # cache the mouse coordinates
             new_coords = pygame.mouse.get_pos()
-            new_row = math.floor(new_coords[0] / GRID_WIDTH)
-            new_col = math.floor(new_coords[1] / GRID_HEIGHT)
-            # TODO: if legal move:
-            chessBoardObject.move_piece((selected_row, selected_col), (new_row, new_col))
+            new_col = math.floor(new_coords[0] / GRID_WIDTH)
+            new_row = math.floor(new_coords[1] / GRID_HEIGHT)
+            if logic_control.is_valid_move(literal_board,
+                                           board_dimensions,
+                                           (selected_col, selected_row),
+                                           (new_col, new_row)):
+                chessBoardObject.move_piece((selected_col, selected_row), (new_col, new_row))
             ui_control.update_board()
         elif event.type == pygame.QUIT:
             running = False

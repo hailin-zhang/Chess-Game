@@ -1,4 +1,9 @@
 class ChessLogic:
+    def __init__(self):
+        self.black_can_castle_left = True
+        self.black_can_castle_right = True
+        self.white_can_castle_left = True
+        self.white_can_castle_right = True
 
     # TODO: checks, checkmates, stalemates
     def is_valid_move(self, board, board_dimensions, original_pos, new_pos):
@@ -11,7 +16,7 @@ class ChessLogic:
         board_size = board_dimensions[0] - 1
         # EMPTY or SAME PLACE or SAME COLOR
         if self._is_empty(current_piece) or \
-                (new_column == current_column and new_row == current_row) or \
+            (new_column == current_column and new_row == current_row) or \
                 (not self._is_empty(new_piece)) and self.is_same_color(current_piece, new_piece):
             return False
         # PAWN
@@ -22,8 +27,8 @@ class ChessLogic:
                     board[new_row, current_column]) or self._not_blocked_or_is_attack(new_row, new_column, current_row,
                                                                                       current_column, current_piece,
                                                                                       board) or (
-                                   new_row == current_row - 2 and new_column == current_column and self._is_empty(
-                    board[new_row, current_column])and board[board_size - 1][current_column] != 14)
+                               new_row == current_row - 2 and new_column == current_column and self._is_empty(
+                           board[new_row, current_column]) and board[board_size - 1][current_column] != 14)
             # if BLACK
             elif current_piece == 3:
                 return (new_row == current_row + 1) and (new_column == current_column) and self._is_empty(
@@ -31,7 +36,7 @@ class ChessLogic:
                                                                                       current_column, current_piece,
                                                                                       board) or (
                                new_row == current_row + 2 and new_column == current_column and self._is_empty(
-                    board[new_row, current_column]) and board[1][current_column] != 14)
+                           board[new_row, current_column]) and board[1][current_column] != 14)
         # KNIGHT
         elif current_piece == 12 or current_piece == 13:
             return self._in_bounds(new_row, new_column, board_size) and \
@@ -64,15 +69,15 @@ class ChessLogic:
                                                   board)
         # KING
         elif current_piece == 4 or current_piece == 5:
-            return self._in_bounds(new_row, new_column, board_size) and \
-                   ((new_column == current_column + 1 and new_row == current_row) or
-                    (new_column == current_column - 1 and new_row == current_row) or
-                    (new_column == current_column and new_row == current_row + 1) or
-                    (new_column == current_column and new_row == current_row - 1) or
-                    (new_column == current_column + 1 and new_row == current_row + 1) or
-                    (new_column == current_column - 1 and new_row == current_row + 1) or
-                    (new_column == current_column + 1 and new_row == current_row - 1) or
-                    (new_column == current_column - 1 and new_row == current_row - 1))
+            return (self._in_bounds(new_row, new_column, board_size) and
+                    ((new_column == current_column + 1 and new_row == current_row) or
+                     (new_column == current_column - 1 and new_row == current_row) or
+                     (new_column == current_column and new_row == current_row + 1) or
+                     (new_column == current_column and new_row == current_row - 1) or
+                     (new_column == current_column + 1 and new_row == current_row + 1) or
+                     (new_column == current_column - 1 and new_row == current_row + 1) or
+                     (new_column == current_column + 1 and new_row == current_row - 1) or
+                     (new_column == current_column - 1 and new_row == current_row - 1)))
 
     # RETURNS TRUE if row, col are inside the board
     @staticmethod
@@ -98,9 +103,7 @@ class ChessLogic:
     @staticmethod
     def _is_empty(piece):
         return piece == 0 or \
-               piece == 14 or \
-               piece == 15 or \
-               piece == 16
+               piece == 14
 
     # RETURNS TRUE if no pieces are between the current piece and the destination piece
     # only for BISHOP, QUEEN, ROOK
@@ -192,3 +195,60 @@ class ChessLogic:
                         return False
                     new_row += 1
                 return True
+
+    def cannot_castle(self, current_piece, board_dimensions, current_column):
+        edge_location = board_dimensions[1] - 1
+        if self.white_can_castle_right and self.white_can_castle_left and \
+                (current_piece == 4):
+            self.white_can_castle_left = False
+            self.white_can_castle_right = False
+        elif current_piece == 8:
+            if self.white_can_castle_right and self.white_can_castle_left:
+                if current_column == edge_location:
+                    self.white_can_castle_right = False
+                elif current_column == 0:
+                    self.white_can_castle_left = False
+            elif self.white_can_castle_left and not self.white_can_castle_right:
+                if current_column == 0:
+                    self.white_can_castle_left = False
+            elif self.white_can_castle_right and not self.white_can_castle_left:
+                if current_column == edge_location:
+                    self.white_can_castle_right = False
+        elif self.black_can_castle_right and self.black_can_castle_left and \
+                (current_piece == 5):
+            self.black_can_castle_left = False
+            self.black_can_castle_right = False
+        elif current_piece == 9:
+            if self.black_can_castle_left and self.black_can_castle_right:
+                if current_column == edge_location:
+                    self.black_can_castle_right = False
+                elif current_column == 0:
+                    self.black_can_castle_left = False
+            elif self.black_can_castle_left and not self.black_can_castle_right:
+                if current_column == 0:
+                    self.black_can_castle_left = False
+            elif self.black_can_castle_right and not self.black_can_castle_left:
+                if current_column == edge_location:
+                    self.black_can_castle_right = False
+
+    def castled_white(self):
+        self.white_can_castle_left = False
+        self.white_can_castle_right = False
+
+    def castled_black(self):
+        self.black_can_castle_left = False
+        self.black_can_castle_right = False
+
+    # TODO: make robust
+    def free_to_castle(self, current_column, new_column, new_row, board):
+        if new_column > current_column:
+            while new_column != current_column:
+                if not self._is_empty(board[new_row][new_column]):
+                    return False
+                new_column -= 1
+        elif new_column < current_column:
+            while new_column != current_column:
+                if not self._is_empty(board[new_row][new_column]):
+                    return False
+                new_column += 1
+        return True

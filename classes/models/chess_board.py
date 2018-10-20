@@ -12,10 +12,8 @@ ROOK   = 8   # 0b1000
 BISHOP = 10  # 0b1010
 KNIGHT = 12  # 0b1100
 
-# MOVED PIECE (for castling, pawn 1st move), FINAL and EQUIVALENT TO 0:
+# MOVED PIECE (pawn 1st move), FINAL and EQUIVALENT TO 0:
 MOVED_PAWN = 14
-MOVED_ROOK = 15
-MOVED_KING = 16
 
 
 class ChessBoard:
@@ -64,6 +62,31 @@ class ChessBoard:
         # TODO: refactor this for robustness
         if (old_piece == PAWN and old_row == 6) or (old_piece == PAWN+BLACK_MASK and old_row == 1):
             self._board[old_row][old_col] = 14
-        else :
+        else:
             self._board[old_row][old_col] = 0
         self._board[new_coords[1]][new_coords[0]] = old_piece
+
+    # TODO: make robust ? ? ?  or not
+    def white_castle_right(self):
+        self._board[7][4] = 0
+        self._board[7][6] = 4
+        self._board[7][7] = 0
+        self._board[7][5] = 8
+
+    def white_castle_left(self):
+        self._board[7][4] = 0
+        self._board[7][2] = 4
+        self._board[7][0] = 0
+        self._board[7][3] = 8
+
+    def black_castle_right(self):
+        self._board[0][4] = 0
+        self._board[0][6] = 5
+        self._board[0][7] = 0
+        self._board[0][5] = 9
+
+    def black_castle_left(self):
+        self._board[0][4] = 0
+        self._board[0][2] = 5
+        self._board[0][0] = 0
+        self._board[0][3] = 9

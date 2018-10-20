@@ -58,8 +58,14 @@ while running:
                                            board_dimensions,
                                            (selected_col, selected_row),
                                            (new_col, new_row)) \
-                    and ((is_whites_turn and current_piece % 2 == 0) or (not is_whites_turn and current_piece % 2 == 1)):
+                    and (
+                    (is_whites_turn and current_piece % 2 == 0) or (not is_whites_turn and current_piece % 2 == 1)):
                 chessBoardObject.move_piece((selected_col, selected_row), (new_col, new_row))
+                # change PAWN to QUEEN! Note to self: consider refactoring this into piece_logic
+                if current_piece == 2 and new_row == 0:
+                    literal_board[new_row][new_col] = 6
+                elif current_piece == 3 and new_row == board_dimensions[1]-1:
+                    literal_board[new_row][new_col] = 7
                 is_whites_turn = not is_whites_turn
                 UI_control.update_board()
             else:

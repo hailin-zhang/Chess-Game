@@ -1,6 +1,6 @@
 class ChessLogic:
 
-    # TODO: checks, checkmates, ATTACKS, replace pawn with queen
+    # TODO: checks, checkmates, stalemates
     def is_valid_move(self, board, board_dimensions, original_pos, new_pos):
         current_column = original_pos[0]
         current_row = original_pos[1]
@@ -18,10 +18,20 @@ class ChessLogic:
         elif current_piece == 2 or current_piece == 3:
             # if WHITE
             if current_piece == 2:
-                return (new_row >= 0) and (new_row == current_row - 1) and (new_column == current_column)
+                return (new_row == current_row - 1) and (new_column == current_column) and self._is_empty(
+                    board[new_row, current_column]) or self._not_blocked_or_is_attack(new_row, new_column, current_row,
+                                                                                      current_column, current_piece,
+                                                                                      board) or (
+                                   new_row == current_row - 2 and new_column == current_column and self._is_empty(
+                    board[new_row, current_column])and board[board_size - 1][current_column] != 14)
             # if BLACK
             elif current_piece == 3:
-                return (new_row <= board_size) and (new_row == current_row + 1) and (new_column == current_column)
+                return (new_row == current_row + 1) and (new_column == current_column) and self._is_empty(
+                    board[new_row, current_column]) or self._not_blocked_or_is_attack(new_row, new_column, current_row,
+                                                                                      current_column, current_piece,
+                                                                                      board) or (
+                               new_row == current_row + 2 and new_column == current_column and self._is_empty(
+                    board[new_row, current_column]) and board[1][current_column] != 14)
         # KNIGHT
         elif current_piece == 12 or current_piece == 13:
             return self._in_bounds(new_row, new_column, board_size) and \
@@ -47,8 +57,9 @@ class ChessLogic:
                                                   board)
         # QUEEN
         elif current_piece == 6 or current_piece == 7:
-            return self._valid_bishop_move(new_row, new_column, current_row, current_column) or \
-                   self._valid_rook_move(new_row, new_column, current_row, current_column) and \
+            bishop_move = self._valid_bishop_move(new_row, new_column, current_row, current_column)
+            rook_move = self._valid_rook_move(new_row, new_column, current_row, current_column)
+            return ((bishop_move and not rook_move) or (rook_move and not bishop_move)) and \
                    self._not_blocked_or_is_attack(new_row, new_column, current_row, current_column, current_piece,
                                                   board)
         # KING
@@ -93,40 +104,91 @@ class ChessLogic:
 
     # RETURNS TRUE if no pieces are between the current piece and the destination piece
     # only for BISHOP, QUEEN, ROOK
+    # IMPORTANT: only VALID MOVES on DIFFERENT COLORED PIECES will be made when this is called!
     def _not_blocked_or_is_attack(self, new_row, new_column, current_row, current_column, current_piece, board):
+        # WHITE PAWN
+        if current_piece == 2:
+            if new_row == current_row - 1:
+                if (new_column == current_column - 1) or (new_column == current_column + 1):
+                    return not self._is_empty(board[new_row][new_column])
+            return False
+        # BLACK PAWN
+        elif current_piece == 3:
+            if new_row == current_row + 1:
+                if (new_column == current_column - 1) or (new_column == current_column + 1):
+                    return not self._is_empty(board[new_row][new_column])
+            return False
         # BISHOP
-        if current_piece == 10 or current_piece == 11:
-            if new_column > current_column and new_row > current_row:
-                while current_row != new_row-1 and current_column != new_column-1:
-                    if not self._is_empty(board[new_row-1][new_column-1]):
-                        return False
-                    new_row -= 1
-                    new_column -= 1
-                return True
-            elif new_column > current_column and new_row < current_row:
-                while current_row != new_row+1 and current_column != new_column-1:
-                    if not self._is_empty(board[new_row+1][new_column-1]):
-                        return False
-                    new_row += 1
-                    new_column -= 1
-                return True
-            elif new_column < current_column and new_row < current_row:
-                while current_row != new_row+1 and current_column != new_column+1:
-                    if not self._is_empty(board[new_row+1][new_column+1]):
-                        return False
-                    new_row += 1
-                    new_column += 1
-                return True
-            elif new_column < current_column and new_row > current_row:
-                while current_row != new_row-1 and current_column != new_column+1:
-                    if not self._is_empty(board[new_row-1][new_column+1]):
-                        return False
-                    new_row -= 1
-                    new_column += 1
-                return True
-        return True
+        elif current_piece == 10 or current_piece == 11:
+            return self._is_valid_bishop_attack(new_row, new_column, current_row, current_column, board)
+        # ROOK
+        elif current_piece == 8 or current_piece == 9:
+            return self._is_valid_rook_attack(new_row, new_column, current_row, current_column, board)
+        # QUEEN
+        elif current_piece == 6 or current_piece == 7:
+            bishop_move = self._is_valid_bishop_attack(new_row, new_column, current_row, current_column, board)
+            rook_move = self._is_valid_rook_attack(new_row, new_column, current_row, current_column, board)
+            return (bishop_move and not rook_move) or (rook_move and not bishop_move)
 
     @staticmethod
     def is_same_color(current_piece, new_piece):
         return ((current_piece % 2 == 1 and new_piece % 2 == 1) or
                 (current_piece % 2 == 0 and new_piece % 2 == 0))
+
+    def _is_valid_bishop_attack(self, new_row, new_column, current_row, current_column, board):
+        if new_column > current_column and new_row > current_row:
+            while current_row != new_row - 1 and current_column != new_column - 1:
+                if not self._is_empty(board[new_row - 1][new_column - 1]):
+                    return False
+                new_row -= 1
+                new_column -= 1
+            return True
+        elif new_column > current_column and new_row < current_row:
+            while current_row != new_row + 1 and current_column != new_column - 1:
+                if not self._is_empty(board[new_row + 1][new_column - 1]):
+                    return False
+                new_row += 1
+                new_column -= 1
+            return True
+        elif new_column < current_column and new_row < current_row:
+            while current_row != new_row + 1 and current_column != new_column + 1:
+                if not self._is_empty(board[new_row + 1][new_column + 1]):
+                    return False
+                new_row += 1
+                new_column += 1
+            return True
+        elif new_column < current_column and new_row > current_row:
+            while current_row != new_row - 1 and current_column != new_column + 1:
+                if not self._is_empty(board[new_row - 1][new_column + 1]):
+                    return False
+                new_row -= 1
+                new_column += 1
+            return True
+
+    def _is_valid_rook_attack(self, new_row, new_column, current_row, current_column, board):
+        if new_row == current_row:
+            if new_column > current_column:
+                while current_column != new_column - 1:
+                    if not self._is_empty(board[new_row][new_column - 1]):
+                        return False
+                    new_column -= 1
+                return True
+            elif new_column < current_column:
+                while current_column != new_column + 1:
+                    if not self._is_empty(board[new_row][new_column + 1]):
+                        return False
+                    new_column += 1
+                return True
+        elif new_column == current_column:
+            if new_row > current_row:
+                while current_row != new_row - 1:
+                    if not self._is_empty(board[new_row - 1][new_column]):
+                        return False
+                    new_row -= 1
+                return True
+            elif new_row < current_row:
+                while current_row != new_row + 1:
+                    if not self._is_empty(board[new_row + 1][new_column]):
+                        return False
+                    new_row += 1
+                return True

@@ -18,9 +18,11 @@ class ChessBoardUI:
                     # cache current piece
                     curr_piece = self.literal_board[row][col]
                     pygame.draw.rect(self.game_display,
-                                     ((self.light_color if (col % 2 == 0) else self.dark_color)  # even columns for even rows
+                                     # even columns for even rows
+                                     ((self.light_color if (col % 2 == 0) else self.dark_color)
                                       if (row % 2 == 0) else
-                                      (self.light_color if (col % 2 == 1) else self.dark_color)),  # odd columns for odd rows
+                                      # odd columns for odd rows
+                                      (self.light_color if (col % 2 == 1) else self.dark_color)),
                                      [self.width * col,
                                       self.height * row,
                                       self.width,

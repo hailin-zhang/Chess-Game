@@ -52,7 +52,6 @@ while running:
             else:
                 game_display.blit(pygame.image.load("resources/images/invalidOverlay.png"),
                                   [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])
-                on_error_sound.play()
         if event.type == pygame.MOUSEBUTTONUP:
             # cache the mouse coordinates
             new_coords = pygame.mouse.get_pos()

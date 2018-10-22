@@ -13,7 +13,6 @@ Instructions:
 - Drag and drop pieces to move them!
 ```
 
-##
 Features of V1.0.2:
 -
 - [x] General chess logic; will determine illegal moves and display an error

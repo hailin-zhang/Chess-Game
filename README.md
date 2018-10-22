@@ -1,5 +1,5 @@
 # Chess V1.0.2
-A chess game developed in python by Hai Lin Zhang.
+A chess game developed in python by Hai Lin Zhang
 
 ## Installation instructions:
 1. Open  _ChessGame-installer.exe_, and select a local directory to unpack the project 

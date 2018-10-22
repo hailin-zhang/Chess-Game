@@ -13,7 +13,9 @@ Instructions:
 - Drag and drop pieces to move them!
 ```
 
-##Features of V1.0.2:
+##
+Features of V1.0.2:
+-
 - [x] General chess logic; will determine illegal moves and display an error
 - [x] Turn-based system
 - [x] Friendly UI and sounds

@@ -30,8 +30,8 @@ class ChessBoard:
                                    # WHITE PIECES are EVEN
                                    [PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN],
                                    [ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK]])
-        # Initial structure for attacked pieces:
-        # 0 is not attacked
+        # Initial structure for attacked/protected pieces:
+        # 0 is not attacked or protected
         # 1 is attacked by WHITE
         # 2 is attacked by BLACK
         # 3 is protected by WHITE

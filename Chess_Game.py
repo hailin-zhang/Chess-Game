@@ -1,5 +1,6 @@
 import pygame
 import math
+import time
 
 from classes.models.chess_board import ChessBoard
 from classes.UI.chess_game_UI import ChessBoardUI
@@ -13,6 +14,7 @@ GRID_HEIGHT = 100
 LIGHT_SHADE = (229, 197, 160)
 DARK_SHADE = (158, 124, 85)
 
+
 # pygame shenanigans
 pygame.init()
 game_display = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
@@ -21,6 +23,9 @@ clock = pygame.time.Clock()
 on_move_sound = pygame.mixer.Sound("resources/sounds/onMove.wav")
 on_castle_sound = pygame.mixer.Sound("resources/sounds/onCastle.wav")
 on_error_sound = pygame.mixer.Sound("resources/sounds/onError.wav")
+on_multiplayer_gameover_sound = pygame.mixer.Sound("resources/sounds/onWin.wav")
+on_singleplayer_win_sound = pygame.mixer.Sound("resources/sounds/onWin.wav")
+on_singleplayer_lose_sound = pygame.mixer.Sound("resources/sounds/onLose.wav")
 
 # TODO: make some funky chessboards!
 # print the initial models
@@ -63,13 +68,19 @@ while running:
                                            (new_col, new_row)) \
                     and (
                     (is_whites_turn and current_piece % 2 == 0) or (not is_whites_turn and current_piece % 2 == 1)):
-                chessBoardObject.move_piece((selected_col, selected_row), (new_col, new_row))
+                move_handler = chessBoardObject.move_piece((selected_col, selected_row), (new_col, new_row))
                 on_move_sound.play()
+                if move_handler == 1:
+                    on_multiplayer_gameover_sound.play()
+                    time.sleep(10)
+                    running = False
                 # change PAWN to QUEEN! Note to self: consider refactoring this into piece_logic
                 if current_piece == 2 and new_row == 0:
                     literal_board[new_row][new_col] = 6
-                elif current_piece == 3 and new_row == board_dimensions[1]-1:
+                    on_castle_sound.play()
+                elif current_piece == 3 and new_row == board_dimensions[1] - 1:
                     literal_board[new_row][new_col] = 7
+                    on_castle_sound.play()
                 # if KING or ROOK moves, cannot castle anymore!
                 elif current_piece == 4 or current_piece == 5 or current_piece == 8 or current_piece == 9:
                     logic_control.cannot_castle(current_piece, board_dimensions, selected_col)
@@ -77,7 +88,7 @@ while running:
                 UI_control.update_board()
             # castling
             elif current_piece == 4 and ((is_whites_turn and current_piece % 2 == 0) or
-                    (not is_whites_turn and current_piece % 2 == 1)):
+                                         (not is_whites_turn and current_piece % 2 == 1)):
                 if new_col == selected_col + 2 and new_row == selected_row and logic_control.white_can_castle_right:
                     if logic_control.free_to_castle(selected_col, new_col, new_row, literal_board):
                         chessBoardObject.white_castle_right()
@@ -108,7 +119,7 @@ while running:
                                       [new_col * GRID_WIDTH, new_row * GRID_HEIGHT])
                     on_error_sound.play()
             elif current_piece == 5 and ((is_whites_turn and current_piece % 2 == 0) or
-                    (not is_whites_turn and current_piece % 2 == 1)):
+                                         (not is_whites_turn and current_piece % 2 == 1)):
                 if new_col == selected_col + 2 and new_row == selected_row and logic_control.black_can_castle_right:
                     if logic_control.free_to_castle(selected_col, new_col, new_row, literal_board):
                         chessBoardObject.black_castle_right()

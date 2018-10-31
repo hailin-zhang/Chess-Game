@@ -28,7 +28,7 @@ class ChessLogic:
                                                                                       current_column, current_piece,
                                                                                       board) or (
                                new_row == current_row - 2 and new_column == current_column and self._is_empty(
-                           board[new_row, current_column]) and board[board_size - 1][current_column] != 14
+                           board[new_row, current_column]) and current_row == board_size - 1
                                and board[current_row-1][current_column] == 0)
             # if BLACK
             elif current_piece == 3:
@@ -37,7 +37,7 @@ class ChessLogic:
                                                                                       current_column, current_piece,
                                                                                       board) or (
                                new_row == current_row + 2 and new_column == current_column and self._is_empty(
-                           board[new_row, current_column]) and board[1][current_column] != 14
+                           board[new_row, current_column]) and current_row == 1
                                and board[current_row+1][current_column] == 0)
         # KNIGHT
         elif current_piece == 12 or current_piece == 13:
@@ -104,8 +104,7 @@ class ChessLogic:
 
     @staticmethod
     def _is_empty(piece):
-        return piece == 0 or \
-               piece == 14
+        return piece == 0
 
     # RETURNS TRUE if no pieces are between the current piece and the destination piece
     # only for BISHOP, QUEEN, ROOK

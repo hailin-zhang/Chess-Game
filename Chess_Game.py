@@ -50,7 +50,7 @@ while running:
             # print(math.floor(selected_coords[0] / GRID_WIDTH),  math.floor(selected_coords[1] / GRID_HEIGHT))
             current_piece = literal_board[selected_row][selected_col]
             if is_whites_turn and current_piece % 2 == 0 or not is_whites_turn and current_piece % 2 == 1:
-                if not (current_piece == 0 or current_piece == 14):
+                if not (current_piece == 0):
                     chessBoardObject.set_selected_piece(selected_row, selected_col)
                     game_display.blit(pygame.image.load("resources/images/selectedOverlay.png"),
                                       [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])

@@ -53,6 +53,9 @@ class ChessBoard:
     def set_selected_piece(self, row, col):
         self._currently_selected = self._board[row][col]
 
+    def get_selected_piece(self):
+        return self._currently_selected
+
     # REQUIRES: piece moved is a valid piece (i.e. not EMPTY)
     # RETURNS: 1 if moved to KING, 0 OTHERWISE (i.e. normal move)
     def move_piece(self, old_coords, new_coords):
@@ -67,7 +70,6 @@ class ChessBoard:
         else:
             return 0
 
-
     # TODO: make robust ? ? ?  or not
     def white_castle_right(self):
         self._board[7][4] = 0
@@ -75,20 +77,17 @@ class ChessBoard:
         self._board[7][7] = 0
         self._board[7][5] = 8
 
-
     def white_castle_left(self):
         self._board[7][4] = 0
         self._board[7][2] = 4
         self._board[7][0] = 0
         self._board[7][3] = 8
 
-
     def black_castle_right(self):
         self._board[0][4] = 0
         self._board[0][6] = 5
         self._board[0][7] = 0
         self._board[0][5] = 9
-
 
     def black_castle_left(self):
         self._board[0][4] = 0

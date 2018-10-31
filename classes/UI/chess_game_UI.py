@@ -12,9 +12,11 @@ class ChessBoardUI:
         self.dark_color = dark_color
 
     def update_board(self):
-        if (self.board_dimensions[0] and self.board_dimensions[1]) > 0:
-            for row in range(self.board_dimensions[0]):
-                for col in range(self.board_dimensions[1]):
+        num_rows = self.board_dimensions[0]
+        num_cols = self.board_dimensions[1]
+        if (num_rows and num_cols) > 0:
+            for row in range(num_rows):
+                for col in range(num_cols):
                     # cache current piece
                     curr_piece = self.literal_board[row][col]
                     pygame.draw.rect(self.game_display,

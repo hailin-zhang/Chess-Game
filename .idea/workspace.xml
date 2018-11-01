@@ -16,6 +16,7 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="13" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.22" value="2" />
           <entry key="project.open.time.23" value="2" />
@@ -27,7 +28,7 @@
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.55" value="1" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -35,14 +36,14 @@
           <entry key="Python Console" value="1" />
           <entry key="dummy" value="82" />
           <entry key="md" value="1144" />
-          <entry key="py" value="25649" />
+          <entry key="py" value="27168" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="1144" />
           <entry key="PLAIN_TEXT" value="82" />
-          <entry key="Python" value="25650" />
+          <entry key="Python" value="27169" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -80,7 +81,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/classes/UI/chess_game_UI.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
+                <state relative-caret-position="40">
                   <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="43" />
                 </state>
               </provider>
@@ -98,8 +99,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/classes/logic/chess_logic.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1634">
-                  <caret line="44" column="16" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="51" selection-end-column="84" />
+                <state relative-caret-position="513">
+                  <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="81" selection-end-column="88" />
                   <folding>
                     <marker date="1540964370662" expanded="true" signature="211:217" ph="..." />
                     <marker date="1540964370662" expanded="true" signature="211:260" ph="..." />
@@ -113,10 +114,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/classes/AI/AI_controller.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="401">
-                  <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+                <state relative-caret-position="458">
+                  <caret line="406" column="42" lean-forward="true" selection-start-line="406" selection-start-column="42" selection-end-line="406" selection-end-column="42" />
                   <folding>
                     <element signature="e#0#48#0" expanded="true" />
+                    <marker date="1541042362402" expanded="true" signature="12681:14855" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -152,9 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>new_column.current_row</find>
-      <find>ui</find>
-      <find>3</find>
       <find>self._in_bounds(new_row, new_column, board_size)</find>
       <find>new_piec</find>
       <find>new_column</find>
@@ -182,6 +181,9 @@
       <find>for</find>
       <find>self.is_black_piece</find>
       <find>Knight</find>
+      <find>if</find>
+      <find>new_row == r0w</find>
+      <find>handle_white</find>
     </findStrings>
     <replaceStrings>
       <replace>EMPTY</replace>
@@ -205,6 +207,9 @@
       <replace>logic_control.</replace>
       <replace>(new_col, new_row, literal_board):.</replace>
       <replace>self.is_white_piece</replace>
+      <replace>current_score =</replace>
+      <replace>row</replace>
+      <replace>handle_black</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -255,6 +260,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -306,7 +312,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="RecentsManager">
@@ -476,7 +481,7 @@
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49872774" visible="true" weight="0.11169652" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49872774" visible="true" weight="0.11169652" />
       <window_info id="Structure" order="1" sideWeight="0.50127226" side_tool="true" weight="0.14278187" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -549,20 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/UI/chess_game_UI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/models/chess_board.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
@@ -574,10 +565,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/classes/UI/chess_game_UI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/logic/chess_logic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1634">
-          <caret line="44" column="16" lean-forward="true" selection-start-line="44" selection-start-column="16" selection-end-line="51" selection-end-column="84" />
+        <state relative-caret-position="513">
+          <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="81" selection-end-column="88" />
           <folding>
             <marker date="1540964370662" expanded="true" signature="211:217" ph="..." />
             <marker date="1540964370662" expanded="true" signature="211:260" ph="..." />
@@ -589,10 +594,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/AI/AI_controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+        <state relative-caret-position="458">
+          <caret line="406" column="42" lean-forward="true" selection-start-line="406" selection-start-column="42" selection-end-line="406" selection-end-column="42" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
+            <marker date="1541042362402" expanded="true" signature="12681:14855" ph="..." />
           </folding>
         </state>
       </provider>

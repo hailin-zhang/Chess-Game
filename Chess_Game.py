@@ -5,6 +5,7 @@ import time
 from classes.models.chess_board import ChessBoard
 from classes.UI.chess_game_UI import ChessBoardUI
 from classes.logic.chess_logic import ChessLogic
+from classes.AI.AI_controller import VanillaBoardAI
 
 # UI constants
 DISPLAY_HEIGHT = 800
@@ -30,6 +31,7 @@ on_singleplayer_lose_sound = pygame.mixer.Sound("resources/sounds/onLose.wav")
 # TODO: make some funky chessboards!
 # print the initial models
 chessBoardObject = ChessBoard()
+vanilla_AI = VanillaBoardAI()
 board_dimensions = chessBoardObject.get_board().shape  # returns a tuple of (#rows, #cols)
 literal_board = chessBoardObject.get_board()
 UI_control = ChessBoardUI(GRID_WIDTH, GRID_HEIGHT, board_dimensions, literal_board, game_display, LIGHT_SHADE,

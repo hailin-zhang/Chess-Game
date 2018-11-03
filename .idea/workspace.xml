@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="427e8b97-a679-42a3-ab6f-9ce718345852" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chess_Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chess_Game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/AI/AI_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/AI/AI_controller.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +16,12 @@
     <session id="1935807969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.22" value="2" />
           <entry key="project.open.time.23" value="2" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.27" value="2" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.285" value="1" />
@@ -28,7 +30,7 @@
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.55" value="1" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -36,14 +38,14 @@
           <entry key="Python Console" value="1" />
           <entry key="dummy" value="82" />
           <entry key="md" value="1144" />
-          <entry key="py" value="27168" />
+          <entry key="py" value="28429" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="1144" />
           <entry key="PLAIN_TEXT" value="82" />
-          <entry key="Python" value="27169" />
+          <entry key="Python" value="28430" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -69,8 +71,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Chess_Game.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="931">
-                  <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
+                <state relative-caret-position="266">
+                  <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -81,7 +83,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/classes/UI/chess_game_UI.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="40">
+                <state relative-caret-position="342">
                   <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="43" />
                 </state>
               </provider>
@@ -99,8 +101,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/classes/logic/chess_logic.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="513">
-                  <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="81" selection-end-column="88" />
+                <state relative-caret-position="209">
+                  <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="81" selection-end-column="88" />
                   <folding>
                     <marker date="1540964370662" expanded="true" signature="211:217" ph="..." />
                     <marker date="1540964370662" expanded="true" signature="211:260" ph="..." />
@@ -114,11 +116,10 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/classes/AI/AI_controller.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="458">
-                  <caret line="406" column="42" lean-forward="true" selection-start-line="406" selection-start-column="42" selection-end-line="406" selection-end-column="42" />
+                <state relative-caret-position="-667">
+                  <caret line="404" column="20" lean-forward="true" selection-start-line="404" selection-start-column="20" selection-end-line="404" selection-end-column="20" />
                   <folding>
                     <element signature="e#0#48#0" expanded="true" />
-                    <marker date="1541042362402" expanded="true" signature="12681:14855" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -131,8 +132,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/classes/models/chess_board.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="475">
-                  <caret line="25" column="68" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+                <state relative-caret-position="252">
+                  <caret line="41" column="55" lean-forward="true" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="55" />
                   <folding>
                     <marker date="1540956804285" expanded="true" signature="2670:2676" ph="..." />
                     <marker date="1540956804285" expanded="true" signature="2849:2854" ph="..." />
@@ -154,8 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self._in_bounds(new_row, new_column, board_size)</find>
-      <find>new_piec</find>
       <find>new_column</find>
       <find>current_column</find>
       <find>15</find>
@@ -184,6 +183,8 @@
       <find>if</find>
       <find>new_row == r0w</find>
       <find>handle_white</find>
+      <find />
+      <find>)</find>
     </findStrings>
     <replaceStrings>
       <replace>EMPTY</replace>
@@ -210,6 +211,7 @@
       <replace>current_score =</replace>
       <replace>row</replace>
       <replace>handle_black</replace>
+      <replace>, board)</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -239,11 +241,11 @@
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/chess_game_controller.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/Chess_Game.py" />
         <option value="$PROJECT_DIR$/classes/AI/AI_logic.py" />
         <option value="$PROJECT_DIR$/classes/models/chess_board.py" />
         <option value="$PROJECT_DIR$/classes/UI/chess_game_UI.py" />
         <option value="$PROJECT_DIR$/classes/logic/chess_logic.py" />
+        <option value="$PROJECT_DIR$/Chess_Game.py" />
         <option value="$PROJECT_DIR$/classes/AI/AI_controller.py" />
       </list>
     </option>
@@ -481,13 +483,13 @@
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49872774" visible="true" weight="0.11169652" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49872774" visible="true" weight="0.0800843" />
       <window_info id="Structure" order="1" sideWeight="0.50127226" side_tool="true" weight="0.14278187" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" weight="0.18295218" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952183" />
@@ -522,6 +524,20 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/classes/AI/AI_controller.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor" />
@@ -544,30 +560,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/AI/AI_logic.py" />
-    <entry file="file://$PROJECT_DIR$/Chess_Game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="931">
-          <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/models/chess_board.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="68" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
-          <folding>
-            <marker date="1540956804285" expanded="true" signature="2670:2676" ph="..." />
-            <marker date="1540956804285" expanded="true" signature="2849:2854" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/UI/chess_game_UI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
+        <state relative-caret-position="342">
           <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="43" />
         </state>
       </provider>
@@ -581,8 +576,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/logic/chess_logic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="81" selection-end-column="88" />
+        <state relative-caret-position="209">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="81" selection-end-column="88" />
           <folding>
             <marker date="1540964370662" expanded="true" signature="211:217" ph="..." />
             <marker date="1540964370662" expanded="true" signature="211:260" ph="..." />
@@ -592,13 +587,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Chess_Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/models/chess_board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="41" column="55" lean-forward="true" selection-start-line="41" selection-start-column="54" selection-end-line="41" selection-end-column="55" />
+          <folding>
+            <marker date="1540956804285" expanded="true" signature="2670:2676" ph="..." />
+            <marker date="1540956804285" expanded="true" signature="2849:2854" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/AI/AI_controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="406" column="42" lean-forward="true" selection-start-line="406" selection-start-column="42" selection-end-line="406" selection-end-column="42" />
+        <state relative-caret-position="-667">
+          <caret line="404" column="20" lean-forward="true" selection-start-line="404" selection-start-column="20" selection-end-line="404" selection-end-column="20" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
-            <marker date="1541042362402" expanded="true" signature="12681:14855" ph="..." />
           </folding>
         </state>
       </provider>

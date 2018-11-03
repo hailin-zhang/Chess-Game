@@ -8,17 +8,9 @@ class VanillaBoardAI:
         self._board_logic = ChessLogic()
         self.turns = 1
         self.random_chance = 0.35  # ** ((self.turns + 9)/ 10)
-        print(self.number_pieces_attacked_and_protected(10, 3, 3))
-        print(self.number_pieces_attacked_and_protected(10, 0, 0))
-        print(self.number_pieces_attacked_and_protected(10, 7, 7))
-        print(self.number_pieces_attacked_and_protected(10, 3, 2))
-        print(self.number_pieces_attacked_and_protected(10, 3, 6))
-        print(self.number_pieces_attacked_and_protected(10, 10, 0))
-        print(self.number_pieces_attacked_and_protected(10, 0, -1))
 
     # needs best score between current location, new location(s)
     def calculate_score(self, piece, new_col, new_row):
-
         return self.calculate_attacks_and_protects_score(piece, new_col, new_row) \
                + self.calculate_heuristic_score(piece, new_col, new_row)
 
@@ -333,66 +325,60 @@ class VanillaBoardAI:
         protected = 0
         while col+1 < 8 and row+1 < 8:
             if board[row + 1][col + 1] != 0:
-                if piece == 10:
+                if piece == 10 or piece == 6:
                     current_score = self._handle_white_move(row + 1, col + 1, board)
-                elif piece == 11:
+                elif piece == 11 or piece == 7:
                     current_score = self._handle_black_move(row + 1, col + 1, board)
                 if current_score != 0:
                     if current_score == 1:
                         attacked += 1
-                        row = orig_row
-                        col = orig_col
                         break
                     else:
                         protected += 1
-                        row = orig_row
-                        col = orig_col
                         break
             row += 1
             col += 1
-        while row+1 < 8 and col-1 > 0:
+        row = orig_row
+        col = orig_col
+        while row+1 < 8 and col-1 > -1:
             if board[row + 1][col - 1] != 0:
-                if piece == 10:
+                if piece == 10 or piece == 6:
                     current_score = self._handle_white_move(row + 1, col - 1, board)
-                elif piece == 11:
+                elif piece == 11 or piece == 7:
                     current_score = self._handle_black_move(row + 1, col - 1, board)
                 if current_score != 0:
                     if current_score == 1:
                         attacked += 1
-                        row = orig_row
-                        col = orig_col
                         break
                     else:
                         protected += 1
-                        row = orig_row
-                        col = orig_col
                         break
             row += 1
             col -= 1
-        while row-1>0 and col+1 < 8:
+        row = orig_row
+        col = orig_col
+        while row-1 > -1 and col+1 < 8:
             if board[row - 1][col + 1] != 0:
-                if piece == 10:
+                if piece == 10 or piece == 6:
                     current_score = self._handle_white_move(row - 1, col + 1, board)
-                elif piece == 11:
+                elif piece == 11 or piece == 7:
                     current_score = self._handle_black_move(row - 1, col + 1, board)
                 if current_score != 0:
                     if current_score == 1:
                         attacked += 1
-                        row = orig_row
-                        col = orig_col
                         break
                     else:
                         protected += 1
-                        row = orig_row
-                        col = orig_col
                         break
             row -= 1
             col += 1
-        while row-1 > 0 and col-1 > 0 :
+        row = orig_row
+        col = orig_col
+        while row-1 > -1 and col-1 > -1:
             if board[row - 1][col - 1] != 0:
-                if piece == 10:
+                if piece == 10 or piece == 6:
                     current_score = self._handle_white_move(row - 1, col - 1, board)
-                elif piece == 11:
+                elif piece == 11 or piece == 7:
                     current_score = self._handle_black_move(row - 1, col - 1, board)
                 if current_score != 0:
                     if current_score == 1:
@@ -414,63 +400,57 @@ class VanillaBoardAI:
         protected = 0
         while col + 1 < 8:
             if board[row][col + 1] != 0:
-                if piece == 8:
+                if piece == 8 or piece == 6:
                     current_score = self._handle_white_move(row, col + 1, board)
-                elif piece == 9:
+                elif piece == 9 or piece == 7:
                     current_score = self._handle_black_move(row, col + 1, board)
                 if current_score != 0:
                     if current_score == 1:
                         attacked += 1
-                        row = orig_row
-                        col = orig_col
                         break
                     else:
                         protected += 1
-                        row = orig_row
-                        col = orig_col
                         break
             col += 1
+        row = orig_row
+        col = orig_col
         while row + 1 < 8:
             if board[row + 1][col] != 0:
-                if piece == 8:
+                if piece == 8 or piece == 6:
                     current_score = self._handle_white_move(row + 1, col, board)
-                elif piece == 9:
+                elif piece == 9 or piece == 7:
                     current_score = self._handle_black_move(row + 1, col, board)
                 if current_score != 0:
                     if current_score == 1:
                         attacked += 1
-                        row = orig_row
-                        col = orig_col
                         break
                     else:
                         protected += 1
-                        row = orig_row
-                        col = orig_col
                         break
             row += 1
-        while col - 1 > 0:
+        row = orig_row
+        col = orig_col
+        while col - 1 > -1:
             if board[row][col - 1] != 0:
-                if piece == 8:
+                if piece == 8 or piece == 6:
                     current_score = self._handle_white_move(row, col - 1, board)
-                elif piece == 9:
+                elif piece == 9 or piece == 7:
                     current_score = self._handle_black_move(row, col - 1, board)
                 if current_score != 0:
                     if current_score == 1:
                         attacked += 1
-                        row = orig_row
-                        col = orig_col
                         break
                     else:
                         protected += 1
-                        row = orig_row
-                        col = orig_col
                         break
             col -= 1
-        while row - 1 > 0:
+        row = orig_row
+        col = orig_col
+        while row - 1 > -1:
             if board[row - 1][col] != 0:
-                if piece == 8:
+                if piece == 8 or piece == 6:
                     current_score = self._handle_white_move(row - 1, col, board)
-                elif piece == 9:
+                elif piece == 9 or piece == 7:
                     current_score = self._handle_black_move(row - 1, col, board)
                 if current_score != 0:
                     if current_score == 1:

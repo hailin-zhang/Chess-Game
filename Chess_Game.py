@@ -87,6 +87,11 @@ while running:
                 elif current_piece == 4 or current_piece == 5 or current_piece == 8 or current_piece == 9:
                     logic_control.cannot_castle(current_piece, board_dimensions, selected_col)
                 is_whites_turn = not is_whites_turn
+                ai_move = vanilla_AI.get_best_move()
+                print(ai_move)
+                chessBoardObject.move_piece([ai_move[2], ai_move[1]], [ai_move[4], ai_move[3]])
+                on_move_sound.play()
+                is_whites_turn = not is_whites_turn
                 UI_control.update_board()
             # castling
             elif current_piece == 4 and ((is_whites_turn and current_piece % 2 == 0) or

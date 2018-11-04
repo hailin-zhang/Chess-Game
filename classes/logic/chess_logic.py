@@ -12,8 +12,10 @@ class ChessLogic:
         current_piece = board[current_row][current_column]
         new_column = new_pos[0]
         new_row = new_pos[1]
-        new_piece = board[new_row][new_column]
         board_size = board_dimensions[0] - 1
+        if not self._in_bounds(new_column, new_row, board_size):
+            return
+        new_piece = board[new_row][new_column]
         # EMPTY or SAME PLACE or SAME COLOR
         if self._is_empty(current_piece) or \
             (new_column == current_column and new_row == current_row) or \

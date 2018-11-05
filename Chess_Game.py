@@ -1,6 +1,8 @@
 import pygame
 import math
+import numpy
 import time
+import asyncio
 
 from classes.models.chess_board import ChessBoard
 from classes.UI.chess_game_UI import ChessBoardUI
@@ -37,8 +39,9 @@ literal_board = chessBoardObject.get_board()
 UI_control = ChessBoardUI(GRID_WIDTH, GRID_HEIGHT, board_dimensions, literal_board, game_display, LIGHT_SHADE,
                           DARK_SHADE)
 UI_control.update_board()
-
 logic_control = ChessLogic()
+loop = asyncio.get_event_loop()
+
 # loops while running, handle I/O events & logic
 is_whites_turn = True
 running = True
@@ -54,6 +57,9 @@ while running:
             if is_whites_turn and current_piece % 2 == 0 or not is_whites_turn and current_piece % 2 == 1:
                 if not (current_piece == 0):
                     chessBoardObject.set_selected_piece(selected_row, selected_col)
+                    task = loop.create_task(vanilla_AI.get_best_move(literal_board))
+                    loop.run_until_complete(task)
+                    ai_move = task.result()
                     game_display.blit(pygame.image.load("resources/images/selectedOverlay.png"),
                                       [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])
             else:
@@ -72,6 +78,7 @@ while running:
                     (is_whites_turn and current_piece % 2 == 0) or (not is_whites_turn and current_piece % 2 == 1)):
                 move_handler = chessBoardObject.move_piece((selected_col, selected_row), (new_col, new_row))
                 on_move_sound.play()
+                UI_control.update_board()
                 if move_handler == 1:
                     on_multiplayer_gameover_sound.play()
                     time.sleep(10)
@@ -86,13 +93,14 @@ while running:
                 # if KING or ROOK moves, cannot castle anymore!
                 elif current_piece == 4 or current_piece == 5 or current_piece == 8 or current_piece == 9:
                     logic_control.cannot_castle(current_piece, board_dimensions, selected_col)
+                # if a new piece is selected, ditch asynchronous data
+                if not numpy.array_equal(chessBoardObject.get_selected_piece(), [selected_row, selected_col]):
+                    ai_move = vanilla_AI.get_best_move(literal_board)
                 is_whites_turn = not is_whites_turn
-                ai_move = vanilla_AI.get_best_move()
-                print(ai_move)
                 chessBoardObject.move_piece([ai_move[2], ai_move[1]], [ai_move[4], ai_move[3]])
                 on_move_sound.play()
-                is_whites_turn = not is_whites_turn
                 UI_control.update_board()
+                is_whites_turn = not is_whites_turn
             # castling
             elif current_piece == 4 and ((is_whites_turn and current_piece % 2 == 0) or
                                          (not is_whites_turn and current_piece % 2 == 1)):

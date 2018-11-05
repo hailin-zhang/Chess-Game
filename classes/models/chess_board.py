@@ -27,24 +27,25 @@ class ChessBoard:
                                    # WHITE PIECES are EVEN
                                    [PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN],
                                    [ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK]])
-        # Initial structure for attacked/protected pieces:
-        # 0 is not attacked or protected
-        # ATTACK MASK is 0b0010
-        # 2 - 0b0010 is attacked by WHITE
-        # 3 - 0b0011 is attacked by BLACK
-        # DEFENSE MASK is 0b0100
-        # 4 - 0b0100 is protected by WHITE
-        # 5 - 0b0101 is protected by BLACK
-        # BLACK MASK is 0b0001
-        self._strategy_board = numpy.array([[0, 0, 0, 0, 0, 0, 0, 0],
-                                            [0, 0, 0, 0, 0, 0, 0, 0],
-                                            [2, 2, 2, 2, 2, 2, 2, 2],
-                                            [0, 0, 0, 0, 0, 0, 0, 0],
-                                            [0, 0, 0, 0, 0, 0, 0, 0],
-                                            [2, 2, 2, 2, 2, 2, 2, 2],
-                                            [0, 0, 0, 0, 0, 0, 0, 0],
-                                            [0, 0, 0, 0, 0, 0, 0, 0]])
-        self._currently_selected = None
+        self._currently_selected = 0
+        # # Initial structure for attacked/protected pieces:
+        # # 0 is not attacked or protected
+        # # ATTACK MASK is 0b0010
+        # # 2 - 0b0010 is attacked by WHITE
+        # # 3 - 0b0011 is attacked by BLACK
+        # # DEFENSE MASK is 0b0100
+        # # 4 - 0b0100 is protected by WHITE
+        # # 5 - 0b0101 is protected by BLACK
+        # # BLACK MASK is 0b0001
+        # self._strategy_board = numpy.array([[0, 0, 0, 0, 0, 0, 0, 0],
+        #                                     [0, 0, 0, 0, 0, 0, 0, 0],
+        #                                     [2, 2, 2, 2, 2, 2, 2, 2],
+        #                                     [0, 0, 0, 0, 0, 0, 0, 0],
+        #                                     [0, 0, 0, 0, 0, 0, 0, 0],
+        #                                     [2, 2, 2, 2, 2, 2, 2, 2],
+        #                                     [0, 0, 0, 0, 0, 0, 0, 0],
+        #                                     [0, 0, 0, 0, 0, 0, 0, 0]])
+        # self._currently_selected = None
 
     def get_board(self):
         return self._board

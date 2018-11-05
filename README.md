@@ -17,7 +17,7 @@ Features of V1.0.2:
 -
 - [x] General chess logic; will determine illegal moves and display an error
 - [x] Turn-based system
-- [x] Friendly UI and sounds
+- [x] Intuitive UI and sounds
 
 Upcoming:
 - 
@@ -29,6 +29,6 @@ Please let me know of any bugs! Thanks :)
 ##
 ``` 
 Fix log:
-- Incorrect move sounds would play twice; once on key-up, once on key-down
+- Incorrect move sounds would play twice: once on key-up, once on key-down
 - Pawn could jump over pieces on first move! (oh no)
 ```

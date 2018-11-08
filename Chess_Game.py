@@ -1,12 +1,13 @@
 import pygame
 import math
-import numpy
 import time
 
 from classes.models.chess_board import ChessBoard
 from classes.UI.chess_game_UI import ChessBoardUI
 from classes.logic.chess_logic import ChessLogic
 from classes.AI.AI_controller import VanillaBoardAI
+
+from multiprocessing import Pool
 
 # UI constants
 DISPLAY_HEIGHT = 800
@@ -28,6 +29,8 @@ on_error_sound = pygame.mixer.Sound("resources/sounds/onError.wav")
 on_multiplayer_gameover_sound = pygame.mixer.Sound("resources/sounds/onWin.wav")
 on_singleplayer_win_sound = pygame.mixer.Sound("resources/sounds/onWin.wav")
 on_singleplayer_lose_sound = pygame.mixer.Sound("resources/sounds/onLose.wav")
+
+pool = Pool(processes=1)
 
 # TODO: make some funky chessboards!
 # print the initial models
@@ -55,6 +58,11 @@ while running:
             if is_whites_turn and current_piece % 2 == 0 or not is_whites_turn and current_piece % 2 == 1:
                 if not (current_piece == 0):
                     chessBoardObject.set_selected_piece(selected_row, selected_col)
+                    if __name__ == '__main__':
+                        AI_thread = pool.apply_async(vanilla_AI.get_best_move(literal_board))
+                        pool.close()
+                        pool.join()
+                        ai_move = AI_thread.get()
                     game_display.blit(pygame.image.load("resources/images/selectedOverlay.png"),
                                       [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])
             else:
@@ -88,8 +96,6 @@ while running:
                 # if KING or ROOK moves, cannot castle anymore!
                 elif current_piece == 4 or current_piece == 5 or current_piece == 8 or current_piece == 9:
                     logic_control.cannot_castle(current_piece, board_dimensions, selected_col)
-                # if a new piece is selected, ditch asynchronous data
-                ai_move = vanilla_AI.get_best_move(literal_board)
                 is_whites_turn = not is_whites_turn
                 chessBoardObject.move_piece([ai_move[2], ai_move[1]], [ai_move[4], ai_move[3]])
                 on_move_sound.play()

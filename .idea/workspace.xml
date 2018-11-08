@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="427e8b97-a679-42a3-ab6f-9ce718345852" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Chess_Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chess_Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/AI/AI_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/AI/AI_controller.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,14 +36,14 @@
           <entry key="Python Console" value="1" />
           <entry key="dummy" value="82" />
           <entry key="md" value="1144" />
-          <entry key="py" value="32518" />
+          <entry key="py" value="32674" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="1144" />
           <entry key="PLAIN_TEXT" value="82" />
-          <entry key="Python" value="32519" />
+          <entry key="Python" value="32675" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -67,11 +66,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.4925544">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Chess_Game.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="171">
-                  <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+                <state relative-caret-position="268">
+                  <caret line="63" column="35" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -97,7 +96,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/classes/AI/AI_controller.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="190">
@@ -155,7 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>for</find>
       <find>self.is_black_piece</find>
       <find>Knight</find>
       <find>if</find>
@@ -185,6 +183,7 @@
       <find>set_selec</find>
       <find>get_best_move</find>
       <find>get_b</find>
+      <find>.get_best</find>
     </findStrings>
     <replaceStrings>
       <replace>.png&quot;), [,])</replace>
@@ -250,12 +249,12 @@
         <option value="$PROJECT_DIR$/classes/UI/chess_game_UI.py" />
         <option value="$PROJECT_DIR$/classes/logic/chess_logic.py" />
         <option value="$PROJECT_DIR$/classes/models/chess_board.py" />
-        <option value="$PROJECT_DIR$/Chess_Game.py" />
         <option value="$PROJECT_DIR$/classes/AI/AI_controller.py" />
+        <option value="$PROJECT_DIR$/Chess_Game.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
     <option name="y" value="40" />
     <option name="width" value="1400" />
@@ -340,7 +339,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.Chess_Game">
-    <configuration name="Chess_Game" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Chess_Game" type="PythonConfigurationType" factoryName="Python">
       <module name="Chess" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -446,15 +445,14 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Chess_Game" />
       <item itemvalue="Python.chessGame" />
       <item itemvalue="Python.chessBoard" />
       <item itemvalue="Python.chess_game_UIcontroller" />
       <item itemvalue="Python.chess_game_controller" />
-      <item itemvalue="Python.Chess_Game" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Chess_Game" />
         <item itemvalue="Python.chess_game_controller" />
         <item itemvalue="Python.chess_game_UIcontroller" />
         <item itemvalue="Python.chessGame" />
@@ -590,22 +588,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Chess_Game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="91" column="16" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/AI/AI_controller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Chess_Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="63" column="35" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

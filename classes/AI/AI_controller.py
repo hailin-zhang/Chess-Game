@@ -1,6 +1,5 @@
 from classes.logic.chess_logic import ChessLogic
 from classes.models.chess_board import ChessBoard
-import asyncio
 
 
 class VanillaBoardAI:
@@ -10,8 +9,7 @@ class VanillaBoardAI:
         self.turns = 1
         self.random_chance = 0.35  # ** ((self.turns + 9)/ 10)
 
-    @asyncio.coroutine
-    async def get_best_move(self, board):
+    def get_best_move(self, board):
         best_score = 0
         # [piece, old_row, old_col, new_row, new_col]
         best_move = [0, -1, -1, -1, -1]

@@ -27,7 +27,7 @@ class ChessBoard:
                                    # WHITE PIECES are EVEN
                                    [PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN, PAWN],
                                    [ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK]])
-        self._currently_selected = 0
+        self._currently_selected = (-1, -1, -1)
         # # Initial structure for attacked/protected pieces:
         # # 0 is not attacked or protected
         # # ATTACK MASK is 0b0010
@@ -52,7 +52,7 @@ class ChessBoard:
 
     # TODO: for branch prediction in parallel in AI
     def set_selected_piece(self, row, col):
-        self._currently_selected = self._board[row][col]
+        self._currently_selected = (row, col, self._board[row][col])
 
     def get_selected_piece(self):
         return self._currently_selected

@@ -1,13 +1,13 @@
 import pygame
 import math
 import time
+import asyncio
 
 from classes.models.chess_board import ChessBoard
 from classes.UI.chess_game_UI import ChessBoardUI
 from classes.logic.chess_logic import ChessLogic
 from classes.AI.AI_controller import VanillaBoardAI
 
-from multiprocessing import Pool
 
 # UI constants
 DISPLAY_HEIGHT = 800
@@ -30,7 +30,6 @@ on_multiplayer_gameover_sound = pygame.mixer.Sound("resources/sounds/onWin.wav")
 on_singleplayer_win_sound = pygame.mixer.Sound("resources/sounds/onWin.wav")
 on_singleplayer_lose_sound = pygame.mixer.Sound("resources/sounds/onLose.wav")
 
-pool = Pool(processes=1)
 
 # TODO: make some funky chessboards!
 # print the initial models
@@ -58,11 +57,6 @@ while running:
             if is_whites_turn and current_piece % 2 == 0 or not is_whites_turn and current_piece % 2 == 1:
                 if not (current_piece == 0):
                     chessBoardObject.set_selected_piece(selected_row, selected_col)
-                    if __name__ == '__main__':
-                        AI_thread = pool.apply_async(vanilla_AI.get_best_move(literal_board))
-                        pool.close()
-                        pool.join()
-                        ai_move = AI_thread.get()
                     game_display.blit(pygame.image.load("resources/images/selectedOverlay.png"),
                                       [selected_col * GRID_WIDTH, selected_row * GRID_HEIGHT])
             else:
@@ -73,6 +67,11 @@ while running:
             new_coords = pygame.mouse.get_pos()
             new_col = math.floor(new_coords[0] / GRID_WIDTH)
             new_row = math.floor(new_coords[1] / GRID_HEIGHT)
+
+            # loop = asyncio.new_event_loop()
+            # asyncio.set_event_loop(loop)
+            # ai_move = loop.run_until_complete(vanilla_AI.get_async_move(literal_board, new_col, new_row))
+
             if logic_control.is_valid_move(literal_board,
                                            board_dimensions,
                                            (selected_col, selected_row),
@@ -97,6 +96,7 @@ while running:
                 elif current_piece == 4 or current_piece == 5 or current_piece == 8 or current_piece == 9:
                     logic_control.cannot_castle(current_piece, board_dimensions, selected_col)
                 is_whites_turn = not is_whites_turn
+                ai_move = vanilla_AI.get_best_move(literal_board)
                 chessBoardObject.move_piece([ai_move[2], ai_move[1]], [ai_move[4], ai_move[3]])
                 on_move_sound.play()
                 UI_control.update_board()

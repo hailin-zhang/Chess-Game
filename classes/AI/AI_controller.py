@@ -9,6 +9,7 @@ class VanillaBoardAI:
         self.turns = 1
         self.random_chance = 0.35  # ** ((self.turns + 9)/ 10)
 
+    # async def get_best_move(self, board):
     def get_best_move(self, board):
         best_score = 0
         # [piece, old_row, old_col, new_row, new_col]
@@ -687,3 +688,15 @@ class VanillaBoardAI:
             row -= 1
             col -= 1
         return best_move_and_score
+
+    async def get_async_move(self, literal_board, new_col, new_row):
+        old_piece = self._board_object.get_selected_piece()
+        old_row = old_piece[0]
+        old_col = old_piece[1]
+        old_val = old_piece[2]
+        literal_board[old_row][old_col] = 0
+        literal_board[new_row][new_col] = old_val
+        best_move = await self.get_best_move(literal_board)
+        literal_board[new_row][new_col] = 0
+        literal_board[old_row][old_col] = old_val
+        return best_move

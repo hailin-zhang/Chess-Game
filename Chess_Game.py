@@ -1,7 +1,6 @@
 import pygame
 import math
 import time
-import asyncio
 
 from classes.models.chess_board import ChessBoard
 from classes.UI.chess_game_UI import ChessBoardUI

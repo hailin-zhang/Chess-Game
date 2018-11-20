@@ -1,5 +1,6 @@
 from classes.logic.chess_logic import ChessLogic
 from classes.models.chess_board import ChessBoard
+import random
 
 
 class VanillaBoardAI:
@@ -7,10 +8,10 @@ class VanillaBoardAI:
         self._board_object = ChessBoard()
         self._board_logic = ChessLogic()
         self.turns = 1
-        self.random_chance = 0.35  # ** ((self.turns + 9)/ 10)
+        self.random_chance = 0.35 ** (self.turns + 9 / 10)
 
-    # async def get_best_move(self, board):
-    def get_best_move(self, board):
+    # def get_best_move(self, board):
+    async def get_best_move(self, board):
         best_score = 0
         # [piece, old_row, old_col, new_row, new_col]
         best_move = [0, -1, -1, -1, -1]
@@ -690,13 +691,24 @@ class VanillaBoardAI:
         return best_move_and_score
 
     async def get_async_move(self, literal_board, new_col, new_row):
-        old_piece = self._board_object.get_selected_piece()
-        old_row = old_piece[0]
-        old_col = old_piece[1]
-        old_val = old_piece[2]
-        literal_board[old_row][old_col] = 0
-        literal_board[new_row][new_col] = old_val
-        best_move = await self.get_best_move(literal_board)
-        literal_board[new_row][new_col] = 0
-        literal_board[old_row][old_col] = old_val
+        if (random.randint(0, 100) / 100) < self.random_chance:
+            old_piece = self._board_object.get_selected_piece()
+            old_row = old_piece[0]
+            old_col = old_piece[1]
+            old_val = old_piece[2]
+            literal_board[old_row][old_col] = 0
+            literal_board[new_row][new_col] = old_val
+            literal_board[new_row][new_col] = 0
+            literal_board[old_row][old_col] = old_val
+            best_move = await self.get_best_move(literal_board)
+        else:
+            best_move = self.get_random_move(literal_board)
         return best_move
+
+    def get_random_move(self, literal_board):
+        for row in range(0, 8):
+            for col in range(0, 8):
+                current_piece = literal_board[row][col]
+                new_pos = [(col + random.randint(1, 7)), (row + random.randint(0, 3))]
+                if self._board_logic.is_valid_move(literal_board, [8, 8], [col, row], new_pos):
+                    return [current_piece, row, col, new_pos[1], new_pos[0]]
